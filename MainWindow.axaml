@@ -25,14 +25,30 @@
                 <StackPanel Margin="0" Spacing="10">
                     <TextBlock Classes="h1" Text="{Binding StatusMessage}" />
                     <Border BorderBrush="Black" BorderThickness="1">
-                        <Grid RowDefinitions="50,50,50" ColumnDefinitions="50,50,50" >
-                            <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
-                            <Rectangle Grid.Row="0" Grid.Column="1" Fill="Blue"/>
-                            <Rectangle Grid.Row="1" Grid.Column="0" Fill="Green"/>
-                            <Rectangle Grid.Row="1" Grid.Column="1" Fill="Yellow"/>
-                            <Rectangle Grid.Row="2" Grid.Column="0" Fill="Cyan"/>
-                            <Rectangle Grid.Row="2" Grid.Column="1" Fill="Purple"/>
-                        </Grid>
+                        <ItemsControl ItemsSource="{Binding SquareList}" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Grid RowDefinitions="50,50,50" ColumnDefinitions="50,50,50" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Fill="{Binding Color}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.Styles>
+                                <Style Selector="ContentPresenter"  x:DataType="model:Square">
+                                    <Setter Property="Grid.Row" Value="{Binding Row}"/>
+                                    <Setter Property="Grid.Column" Value="{Binding Column}"/>
+                                </Style>
+                            </ItemsControl.Styles>
+                        </ItemsControl>
+                        <!-- <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
+                        <Rectangle Grid.Row="0" Grid.Column="1" Fill="Blue"/>
+                        <Rectangle Grid.Row="1" Grid.Column="0" Fill="Green"/>
+                        <Rectangle Grid.Row="1" Grid.Column="1" Fill="Yellow"/>
+                        <Rectangle Grid.Row="2" Grid.Column="0" Fill="Cyan"/>
+                        <Rectangle Grid.Row="2" Grid.Column="1" Fill="Purple"/> -->
                     </Border>
                 </StackPanel>
                 <Border Width="200" DockPanel.Dock="Right">
