@@ -1,22 +1,52 @@
 <Window xmlns="https://github.com/avaloniaui"
+        xmlns:model="using:SquareGame.Model"
+        xmlns:infrastructure="using:SquareGame.Infrastructure"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="AvaloniaExercises.MainWindow"
-        Title="AvaloniaExercises">
-
+        x:Class="SquareGame.MainWindow"
+        x:DataType="model:Game"
+        Design.DataContext="{x:Static model:Game.DesignInstance}"
+        Title="SquareGame">
+    <Window.Styles>
+        <Style Selector="TextBlock.h1">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style Selector="Rectangle">
+            <Setter Property="Stroke" Value="black" />
+            <Setter Property="StrokeThickness" Value="1" />
+        </Style>
+    </Window.Styles>
     <TabControl>
-        <!-- <TabItem Header="Exercise 1">
-        <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*">
-        <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
-        <Rectangle Grid.Row="0" Grid.Column="1" Fill="Blue"/>
-        <Rectangle Grid.Row="1" Grid.Column="0" Fill="Green"/>
-        <Rectangle Grid.Row="1" Grid.Column="1" Fill="Yellow"/>
-        <Rectangle Grid.Row="2" Grid.Column="0" Fill="Cyan"/>
-        <Rectangle Grid.Row="2" Grid.Column="1" Fill="Purple"/>
-        </Grid>
-        </TabItem> -->
+        <TabItem Header="Game">
+            <DockPanel LastChildFill="False">
+                <StackPanel Margin="0" Spacing="10">
+                    <TextBlock Classes="h1" Text="{Binding StatusMessage}" />
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid RowDefinitions="50,50,50" ColumnDefinitions="50,50,50" >
+                            <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
+                            <Rectangle Grid.Row="0" Grid.Column="1" Fill="Blue"/>
+                            <Rectangle Grid.Row="1" Grid.Column="0" Fill="Green"/>
+                            <Rectangle Grid.Row="1" Grid.Column="1" Fill="Yellow"/>
+                            <Rectangle Grid.Row="2" Grid.Column="0" Fill="Cyan"/>
+                            <Rectangle Grid.Row="2" Grid.Column="1" Fill="Purple"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+                <Border Width="200" DockPanel.Dock="Right">
+                    <StackPanel Margin="0" Spacing="10">
+                        <Button Content="Reset"/>
+                        <Button Content="Load"/>
+                        <Button Content="Save"/>
+
+                        <TextBlock Text="6x6" />
+                        <Button Content="Change size"/>
+                    </StackPanel>
+                </Border>
+            </DockPanel>
+        </TabItem>
 
         <!-- <TabItem Header="Exercise 2">
         <StackPanel Margin="10" Spacing="10">
@@ -32,7 +62,7 @@
         </StackPanel>
         </TabItem> -->
 
-        <TabItem Header="Exercise 3">
+        <TabItem Header="Settings">
             <StackPanel Margin="20" Spacing="10">
                 <TextBlock Text="Choose an animal:" />
                 <RadioButton GroupName="AnimalGroup" Name= "CatRadioButton" Content="Cat" IsChecked="True" />
@@ -40,11 +70,6 @@
                 <RadioButton GroupName="AnimalGroup" Name= "BirdRadioButton" Content="Bird" IsChecked="True" />
                 <Image Name="AnimalImage" Width="200" Height="200" />
                 <Button Content="Show Image" Click="Exercise3ShowImage_Click" />
-            </StackPanel>
-        </TabItem>
-
-        <TabItem Header="Exercise 4">
-            <StackPanel Margin="20" Spacing="10">
             </StackPanel>
         </TabItem>
     </TabControl>

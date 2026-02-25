@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace AvaloniaExercises;
+namespace SquareGame;
 
 class Program
 {

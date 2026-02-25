@@ -4,7 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 
-namespace AvaloniaExercises;
+namespace SquareGame;
 
 public partial class MainWindow : Window
 {
