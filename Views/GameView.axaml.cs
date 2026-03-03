@@ -13,6 +13,8 @@ public partial class GameView : UserControl
 {
     private Game game;
 
+    public GameView() : this(new Game(4, 3)) { }
+
     public GameView(Game game)
     {
         this.game = game;
@@ -22,7 +24,10 @@ public partial class GameView : UserControl
         ResetBtn.Click += ResetBtn_Click;
         LoadBtn.Click += LoadBtn_Click;
         SaveBtn.Click += SaveBtn_Click;
-        ChangeSizeBtn.Click += ChangeSizeBtn_Click;
+        RecreateBtn.Click += RecreateBtn_Click;
+
+        InputWidth.Value = game.GetWidth();
+        InputHeight.Value = game.GetHeight();
 
         UpdateGame(game);
     }
@@ -45,8 +50,11 @@ public partial class GameView : UserControl
         UpdateGame(game);
     }
 
-    void ChangeSizeBtn_Click(object sender, RoutedEventArgs e)
+    void RecreateBtn_Click(object sender, RoutedEventArgs e)
     {
+        int width = (int)InputWidth.Value;
+        int height = (int)InputHeight.Value;
+        game = new Game(width, height);
         UpdateGame(game);
     }
 
@@ -89,7 +97,6 @@ public partial class GameView : UserControl
         }
 
         StatusMessage.Text = game.GetStatusMessage();
-        GridSize.Text = $"{width} x {height}";
     }
 
     public string GenerateRowString(int quantity, string text)
