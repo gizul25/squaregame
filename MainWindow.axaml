@@ -24,6 +24,8 @@
             <DockPanel LastChildFill="False">
                 <StackPanel Margin="0" Spacing="10">
                     <TextBlock Classes="h1" Text="{Binding StatusMessage}" />
+                    <!-- <TextBlock Text="{Binding SquareList.Width, Converter={x:Static infrastructure:GridRowConverter.Instance}, ConverterParameter=50}"/> -->
+                    <Grid RowDefinitions="{Binding SquareList.Width, Converter={x:Static infrastructure:GridRowConverter.Instance}, ConverterParameter=50}" ColumnDefinitions="50,50,50" />
                     <Border BorderBrush="Black" BorderThickness="1">
                         <ItemsControl ItemsSource="{Binding SquareList}" >
                             <ItemsControl.ItemsPanel>
@@ -43,12 +45,6 @@
                                 </Style>
                             </ItemsControl.Styles>
                         </ItemsControl>
-                        <!-- <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
-                        <Rectangle Grid.Row="0" Grid.Column="1" Fill="Blue"/>
-                        <Rectangle Grid.Row="1" Grid.Column="0" Fill="Green"/>
-                        <Rectangle Grid.Row="1" Grid.Column="1" Fill="Yellow"/>
-                        <Rectangle Grid.Row="2" Grid.Column="0" Fill="Cyan"/>
-                        <Rectangle Grid.Row="2" Grid.Column="1" Fill="Purple"/> -->
                     </Border>
                 </StackPanel>
                 <Border Width="200" DockPanel.Dock="Right">
@@ -57,7 +53,14 @@
                         <Button Content="Load"/>
                         <Button Content="Save"/>
 
-                        <TextBlock Text="6x6" />
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat=" {0} x {1}">
+                                    <Binding Path="SquareList.Width" />
+                                    <Binding Path="SquareList.Height" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
                         <Button Content="Change size"/>
                     </StackPanel>
                 </Border>
