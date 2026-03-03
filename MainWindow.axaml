@@ -1,13 +1,9 @@
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:model="using:SquareGame.Model"
-        xmlns:infrastructure="using:SquareGame.Infrastructure"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SquareGame.MainWindow"
-        x:DataType="model:Game"
-        Design.DataContext="{x:Static model:Game.DesignInstance}"
         Title="SquareGame">
     <Window.Styles>
         <Style Selector="TextBlock.h1">
@@ -23,42 +19,19 @@
         <TabItem Header="Game">
             <DockPanel LastChildFill="False">
                 <StackPanel Margin="0" Spacing="10">
-                    <TextBlock Classes="h1" Text="{Binding StatusMessage}" />
+                    <TextBlock Classes="h1" Name= "StatusMessage" />
                     <Border BorderBrush="Black" BorderThickness="1">
-                        <ItemsControl ItemsSource="{Binding SquareList}" >
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <Grid RowDefinitions="50,50,50" ColumnDefinitions="50,50,50" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Rectangle Fill="{Binding Color}"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.Styles>
-                                <Style Selector="ContentPresenter"  x:DataType="model:Square">
-                                    <Setter Property="Grid.Row" Value="{Binding Row}"/>
-                                    <Setter Property="Grid.Column" Value="{Binding Column}"/>
-                                </Style>
-                            </ItemsControl.Styles>
-                        </ItemsControl>
-                        <!-- <Rectangle Grid.Row="0" Grid.Column="0" Fill="Red"/>
-                        <Rectangle Grid.Row="0" Grid.Column="1" Fill="Blue"/>
-                        <Rectangle Grid.Row="1" Grid.Column="0" Fill="Green"/>
-                        <Rectangle Grid.Row="1" Grid.Column="1" Fill="Yellow"/>
-                        <Rectangle Grid.Row="2" Grid.Column="0" Fill="Cyan"/>
-                        <Rectangle Grid.Row="2" Grid.Column="1" Fill="Purple"/> -->
+                        <Grid Name= "GameGrid"  RowDefinitions="50,50,50" ColumnDefinitions="50,50,50"  />
                     </Border>
                 </StackPanel>
                 <Border Width="200" DockPanel.Dock="Right">
                     <StackPanel Margin="0" Spacing="10">
-                        <Button Content="Reset"/>
-                        <Button Content="Load"/>
-                        <Button Content="Save"/>
+                        <Button Name= "ResetBtn" Content="Reset"/>
+                        <Button Name= "LoadBtn" Content="Load"/>
+                        <Button Name= "SaveBtn" Content="Save"/>
 
-                        <TextBlock Text="6x6" />
-                        <Button Content="Change size"/>
+                        <TextBlock Name= "GridSize" Text="6x6" />
+                        <Button Name= "ChangeSizeBtn"  Content="Change size"/>
                     </StackPanel>
                 </Border>
             </DockPanel>
@@ -85,7 +58,7 @@
                 <RadioButton GroupName="AnimalGroup" Name= "DogRadioButton" Content="Dog" IsChecked="True" />
                 <RadioButton GroupName="AnimalGroup" Name= "BirdRadioButton" Content="Bird" IsChecked="True" />
                 <Image Name="AnimalImage" Width="200" Height="200" />
-                <Button Content="Show Image" Click="Exercise3ShowImage_Click" />
+                <!-- <Button Content="Show Image" Click="Exercise3ShowImage_Click" /> -->
             </StackPanel>
         </TabItem>
     </TabControl>
