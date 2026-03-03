@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SquareGame.GameView">
+    <TabControl>
+        <TabItem Header="Game">
+            <DockPanel LastChildFill="False">
+                <StackPanel Margin="0" Spacing="10">
+                    <TextBlock Classes="h1" Name= "StatusMessage" />
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid Name= "GameGrid"  RowDefinitions="50,50,50" ColumnDefinitions="50,50,50"  />
+                    </Border>
+                </StackPanel>
+                <Border Width="100" DockPanel.Dock="Right">
+                    <StackPanel Margin="0" Spacing="10">
+                        <Button Name= "ResetBtn" Content="Reset"/>
+                        <Button Name= "LoadBtn" Content="Load"/>
+                        <Button Name= "SaveBtn" Content="Save"/>
+                    </StackPanel>
+                </Border>
+            </DockPanel>
+        </TabItem>
+
+        <TabItem Header="Settings">
+            <StackPanel Margin="0" Spacing="10">
+                <TextBlock Name= "GridSize" Text="6x6" />
+                <Button Name= "ChangeSizeBtn"  Content="Change size"/>
+                <Button Name= "ApplyBtn" Content= "Apply"/>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
+</UserControl>

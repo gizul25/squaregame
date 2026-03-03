@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SquareGame.MainWindow"
-        Title="SquareGame">
+        Title="SquareGame" Name= "TheWindow">
     <Window.Styles>
         <Style Selector="TextBlock.h1">
             <Setter Property="FontSize" Value="18"/>
@@ -15,51 +15,11 @@
             <Setter Property="StrokeThickness" Value="1" />
         </Style>
     </Window.Styles>
-    <TabControl>
-        <TabItem Header="Game">
-            <DockPanel LastChildFill="False">
-                <StackPanel Margin="0" Spacing="10">
-                    <TextBlock Classes="h1" Name= "StatusMessage" />
-                    <Border BorderBrush="Black" BorderThickness="1">
-                        <Grid Name= "GameGrid"  RowDefinitions="50,50,50" ColumnDefinitions="50,50,50"  />
-                    </Border>
-                </StackPanel>
-                <Border Width="200" DockPanel.Dock="Right">
-                    <StackPanel Margin="0" Spacing="10">
-                        <Button Name= "ResetBtn" Content="Reset"/>
-                        <Button Name= "LoadBtn" Content="Load"/>
-                        <Button Name= "SaveBtn" Content="Save"/>
-
-                        <TextBlock Name= "GridSize" Text="6x6" />
-                        <Button Name= "ChangeSizeBtn"  Content="Change size"/>
-                    </StackPanel>
-                </Border>
-            </DockPanel>
-        </TabItem>
-
-        <!-- <TabItem Header="Exercise 2">
-        <StackPanel Margin="10" Spacing="10">
-        <TextBox Name="Exercise2TextBox"/>
-        <ComboBox Name="Exercise2ComboBox">
-        <ComboBoxItem>Item 1</ComboBoxItem>
-        <ComboBoxItem>Item 2</ComboBoxItem>
-        <ComboBoxItem>Item 3</ComboBoxItem>
-        </ComboBox>
-        <CheckBox Name="Exercise2CheckBox"/>
-        <Button Content="Show Output" Click="Exercise2ShowOutput_Click"/>
-        <TextBlock Name="OutputTextBlock" TextWrapping="Wrap"/>
-        </StackPanel>
-        </TabItem> -->
-
-        <TabItem Header="Settings">
-            <StackPanel Margin="20" Spacing="10">
-                <TextBlock Text="Choose an animal:" />
-                <RadioButton GroupName="AnimalGroup" Name= "CatRadioButton" Content="Cat" IsChecked="True" />
-                <RadioButton GroupName="AnimalGroup" Name= "DogRadioButton" Content="Dog" IsChecked="True" />
-                <RadioButton GroupName="AnimalGroup" Name= "BirdRadioButton" Content="Bird" IsChecked="True" />
-                <Image Name="AnimalImage" Width="200" Height="200" />
-                <!-- <Button Content="Show Image" Click="Exercise3ShowImage_Click" /> -->
-            </StackPanel>
-        </TabItem>
-    </TabControl>
+    <StackPanel>
+        <TabControl Name= "MainTabControl" TabStripPlacement="Left">
+        </TabControl>
+        <Button Name= "DeleteBtn" Content= "Delete"  />
+        <Button Name= "NewLocalBtn" Content= "New local"  />
+        <Button Name= "NewOnlineBtn"  Content= "New online"  />
+    </StackPanel>
 </Window>
