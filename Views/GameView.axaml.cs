@@ -125,6 +125,14 @@ public partial class GameView : UserControl
             0 => "white",
             1 => "blue",
             2 => "red",
+            3 => "green",
+            4 => "pink",
+            5 => "yellow",
+            6 => "orange",
+            7 => "cyan",
+            8 => "purple",
+            9 => "lime",
+            10 => "brown",
             _ => "",
         };
     }
