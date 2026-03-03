@@ -29,6 +29,7 @@ public partial class GameView : UserControl
 
         InputWidth.Value = game.GetWidth();
         InputHeight.Value = game.GetHeight();
+        InputPlayerCount.Value = game.GetPlayerCount();
 
         UpdateGame(game);
     }
@@ -53,10 +54,9 @@ public partial class GameView : UserControl
 
     void RecreateBtn_Click(object sender, RoutedEventArgs e)
     {
-        int width = (int)InputWidth.Value;
-        int height = (int)InputHeight.Value;
-        config.Width = width;
-        config.Height = height;
+        config.Width = (int)InputWidth.Value;
+        config.Height = (int)InputHeight.Value;
+        config.PlayerCount = (int)InputPlayerCount.Value;
 
         game.Recreate(config);
         UpdateGame(game);

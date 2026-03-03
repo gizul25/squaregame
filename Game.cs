@@ -49,6 +49,11 @@ public class Game
         return config.Height;
     }
 
+    public int GetPlayerCount()
+    {
+        return config.PlayerCount;
+    }
+
     public int GetPlayer(int x, int y)
     {
         return board[y][x];
