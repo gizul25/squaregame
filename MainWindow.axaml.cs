@@ -28,7 +28,7 @@ public partial class MainWindow : Window
 
     private void NewLocalBtn_Click(object sender, RoutedEventArgs e)
     {
-        var game = new Game(5, 3);
+        var game = new Game();
         games.Add(game);
 
         var gameView = new GameView(game);

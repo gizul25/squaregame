@@ -11,9 +11,10 @@ namespace SquareGame;
 
 public partial class GameView : UserControl
 {
+    private GameConfig config = new();
     private Game game;
 
-    public GameView() : this(new Game(4, 3)) { }
+    public GameView() : this(new Game()) { }
 
     public GameView(Game game)
     {
@@ -34,19 +35,19 @@ public partial class GameView : UserControl
 
     void ResetBtn_Click(object sender, RoutedEventArgs e)
     {
-        game = new Game(4, 4);
+        game.ResetBoard();
         UpdateGame(game);
     }
 
     void LoadBtn_Click(object sender, RoutedEventArgs e)
     {
-        game = new Game(3, 3);
+        // game = new Game(3, 3);
         UpdateGame(game);
     }
 
     void SaveBtn_Click(object sender, RoutedEventArgs e)
     {
-        game = new Game(5, 5);
+        // game = new Game(5, 5);
         UpdateGame(game);
     }
 
@@ -54,7 +55,10 @@ public partial class GameView : UserControl
     {
         int width = (int)InputWidth.Value;
         int height = (int)InputHeight.Value;
-        game = new Game(width, height);
+        config.Width = width;
+        config.Height = height;
+
+        game.Recreate(config);
         UpdateGame(game);
     }
 

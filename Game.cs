@@ -2,25 +2,34 @@ using System.Collections.Generic;
 
 public class Game
 {
-    public Game(int width, int height)
-    {
-        this.width = width;
-        this.height = height;
+    public Game() : this(new GameConfig()) { }
 
-        InitBoard();
+    public Game(GameConfig config)
+    {
+        this.config = config;
+
+        ResetBoard();
     }
 
-    void InitBoard()
+    public void ResetBoard()
     {
-        for (int y = 0; y < height; y++)
+        board.Clear();
+        for (int y = 0; y < config.Height; y++)
         {
             List<int> row = [];
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < config.Width; x++)
             {
                 row.Add(0);
             }
             board.Add(row);
         }
+        statusMessage = "";
+    }
+
+    public void Recreate(GameConfig config)
+    {
+        this.config = config;
+        ResetBoard();
     }
 
     public void OnTileClicked(int x, int y)
@@ -32,12 +41,12 @@ public class Game
 
     public int GetWidth()
     {
-        return width;
+        return config.Width;
     }
 
     public int GetHeight()
     {
-        return height;
+        return config.Height;
     }
 
     public int GetPlayer(int x, int y)
@@ -50,8 +59,7 @@ public class Game
         return statusMessage;
     }
 
-    int width;
-    int height;
+    GameConfig config;
     List<List<int>> board = [];
     string statusMessage = "";
 }
