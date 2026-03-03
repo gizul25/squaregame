@@ -7,4 +7,5 @@ public class GameConfig
     public int Height = 3;
     public int PlayerCount = 2;
     // public List<string> PlayerColours = [];
+    public List<List<int>> board = [];
 }

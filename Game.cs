@@ -8,28 +8,36 @@ public class Game
     {
         this.config = config;
 
-        ResetBoard();
+        LoadBoard();
+    }
+
+    public void LoadBoard()
+    {
+        board.Clear();
+        if (config.board.Count > 0)
+        {
+            FillFromBoard(config.board);
+        }
+        else
+        {
+            FillEmptyBoard();
+        }
+
+
+        statusMessage = "";
     }
 
     public void ResetBoard()
     {
         board.Clear();
-        for (int y = 0; y < config.Height; y++)
-        {
-            List<int> row = [];
-            for (int x = 0; x < config.Width; x++)
-            {
-                row.Add(0);
-            }
-            board.Add(row);
-        }
+        FillEmptyBoard();
         statusMessage = "";
     }
 
     public void Recreate(GameConfig config)
     {
         this.config = config;
-        ResetBoard();
+        LoadBoard();
     }
 
     public void OnTileClicked(int x, int y)
@@ -62,6 +70,33 @@ public class Game
     public string GetStatusMessage()
     {
         return statusMessage;
+    }
+
+    void FillFromBoard(List<List<int>> src)
+    {
+        for (int y = 0; y < config.Height; y++)
+        {
+            List<int> row = [];
+            for (int x = 0; x < config.Width; x++)
+            {
+                row.Add(src[y][x]);
+            }
+            board.Add(row);
+        }
+    }
+
+
+    void FillEmptyBoard()
+    {
+        for (int y = 0; y < config.Height; y++)
+        {
+            List<int> row = [];
+            for (int x = 0; x < config.Width; x++)
+            {
+                row.Add(0);
+            }
+            board.Add(row);
+        }
     }
 
     GameConfig config;

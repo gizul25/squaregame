@@ -42,14 +42,14 @@ public partial class GameView : UserControl
 
     void LoadBtn_Click(object sender, RoutedEventArgs e)
     {
-        // game = new Game(3, 3);
+        var config = GamePersistence.Load("save.txt");
+        game.Recreate(config);
         UpdateGame(game);
     }
 
     void SaveBtn_Click(object sender, RoutedEventArgs e)
     {
-        // game = new Game(5, 5);
-        UpdateGame(game);
+        GamePersistence.Save(game, "save.txt");
     }
 
     void RecreateBtn_Click(object sender, RoutedEventArgs e)
